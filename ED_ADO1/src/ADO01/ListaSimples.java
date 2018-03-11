@@ -2,7 +2,7 @@ package ADO01;
 
 /**
  *
- * @author Bruna
+ * @author Bruna Sayuri
  */
 public class ListaSimples {
 
@@ -99,12 +99,20 @@ public class ListaSimples {
 
         No atual = this.prim;
 
-        while (atual != null && (!atual.getC().getModelo().equals(modelo))) {
-            atual = atual.getProx();
+        if (this.isEmpty()) {
+            msg = "Lista vazia";
+
+        } else {
+
+            while (atual != null && (!atual.getC().getModelo().equals(modelo))) {
+                atual = atual.getProx();
+            }
+                
+            msg = "Modelo: " + atual.getC().getModelo() + "\n"
+                    + "Marca: " + atual.getC().getMarca() + "\n"
+                    + "Ano: " + atual.getC().getAno();
         }
-        return msg = "Modelo: " + atual.getC().getModelo() + "\n"
-                + "Marca: " + atual.getC().getMarca() + "\n"
-                + "Ano: " + atual.getC().getAno();
+        return msg;
     }
 
     public String imprimirLista() {
@@ -114,11 +122,25 @@ public class ListaSimples {
         } else {
             No atual = this.prim;
             while (atual != null) {
-                msg += atual.getC().getModelo() + "-->";
+                msg += atual.getC().getModelo() + "\n";
                 atual = atual.getProx();
             }
         }
-        
+
         return msg;
+    }
+
+    public boolean removerTudo() {
+
+        if (this.isEmpty()) {
+            return false;
+
+        } else {
+            prim = null;
+            ult = null;
+            qtdNo = 0;
+        }
+        
+        return true;
     }
 }

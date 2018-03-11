@@ -8,11 +8,16 @@ import javax.swing.JOptionPane;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
+    ListaSimples lista = new ListaSimples();
+
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -25,7 +30,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         groupOpcoes = new javax.swing.ButtonGroup();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabPane = new javax.swing.JTabbedPane();
         panelOpcoes = new javax.swing.JPanel();
         radioInsereInicio = new javax.swing.JRadioButton();
         radioInsereFinal = new javax.swing.JRadioButton();
@@ -36,11 +41,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttonOk = new javax.swing.JButton();
         lblOpcoes = new javax.swing.JLabel();
         panelInicio = new javax.swing.JPanel();
+        lblModeloInicio = new javax.swing.JLabel();
+        txtModeloInicio = new javax.swing.JTextField();
+        lblMarcaInicio = new javax.swing.JLabel();
+        txtMarcaInicio = new javax.swing.JTextField();
+        lblAnoInicio = new javax.swing.JLabel();
+        txtAnoInicio = new javax.swing.JTextField();
+        buttonAddInicio = new javax.swing.JButton();
         panelFinal = new javax.swing.JPanel();
-        panelPesquisa = new javax.swing.JPanel();
-        panelImprime = new javax.swing.JPanel();
-        panelRemoveUm = new javax.swing.JPanel();
-        panelRemoveTodos = new javax.swing.JPanel();
+        lblModeloFinal = new javax.swing.JLabel();
+        txtModeloFinal = new javax.swing.JTextField();
+        lblMarcaFinal = new javax.swing.JLabel();
+        txtAnoFinal = new javax.swing.JTextField();
+        lblAnoFinal = new javax.swing.JLabel();
+        txtMarcaFinal = new javax.swing.JTextField();
+        buttonAddFinal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
@@ -93,7 +108,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(panelOpcoesLayout.createSequentialGroup()
                         .addGap(160, 160, 160)
                         .addComponent(buttonOk)))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
         panelOpcoesLayout.setVerticalGroup(
             panelOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,85 +132,125 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Menu", panelOpcoes);
+        tabPane.addTab("Menu", panelOpcoes);
+
+        lblModeloInicio.setText("Modelo");
+
+        lblMarcaInicio.setText("Marca");
+
+        lblAnoInicio.setText("Ano");
+
+        buttonAddInicio.setText("Adicionar");
+        buttonAddInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddInicioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelInicioLayout = new javax.swing.GroupLayout(panelInicio);
         panelInicio.setLayout(panelInicioLayout);
         panelInicioLayout.setHorizontalGroup(
             panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
+            .addGroup(panelInicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonAddInicio)
+                    .addGroup(panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelInicioLayout.createSequentialGroup()
+                            .addComponent(lblModeloInicio)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtModeloInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelInicioLayout.createSequentialGroup()
+                            .addComponent(lblMarcaInicio)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtMarcaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelInicioLayout.createSequentialGroup()
+                            .addGap(8, 8, 8)
+                            .addComponent(lblAnoInicio)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtAnoInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
         panelInicioLayout.setVerticalGroup(
             panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
+            .addGroup(panelInicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblModeloInicio)
+                    .addComponent(txtModeloInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMarcaInicio)
+                    .addComponent(txtMarcaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAnoInicio)
+                    .addComponent(txtAnoInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonAddInicio)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Add Início", panelInicio);
+        tabPane.addTab("Add Início", panelInicio);
+
+        lblModeloFinal.setText("Modelo");
+
+        lblMarcaFinal.setText("Marca");
+
+        lblAnoFinal.setText("Ano");
+
+        buttonAddFinal.setText("Adicionar");
+        buttonAddFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddFinalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFinalLayout = new javax.swing.GroupLayout(panelFinal);
         panelFinal.setLayout(panelFinalLayout);
         panelFinalLayout.setHorizontalGroup(
             panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
+            .addGroup(panelFinalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonAddFinal)
+                    .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelFinalLayout.createSequentialGroup()
+                            .addComponent(lblModeloFinal)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtModeloFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelFinalLayout.createSequentialGroup()
+                            .addComponent(lblMarcaFinal)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtMarcaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelFinalLayout.createSequentialGroup()
+                            .addGap(8, 8, 8)
+                            .addComponent(lblAnoFinal)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtAnoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
         panelFinalLayout.setVerticalGroup(
             panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
+            .addGroup(panelFinalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblModeloFinal)
+                    .addComponent(txtModeloFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMarcaFinal)
+                    .addComponent(txtMarcaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAnoFinal)
+                    .addComponent(txtAnoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonAddFinal)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Add Final", panelFinal);
-
-        javax.swing.GroupLayout panelPesquisaLayout = new javax.swing.GroupLayout(panelPesquisa);
-        panelPesquisa.setLayout(panelPesquisaLayout);
-        panelPesquisaLayout.setHorizontalGroup(
-            panelPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
-        );
-        panelPesquisaLayout.setVerticalGroup(
-            panelPesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Pesquisa", panelPesquisa);
-
-        javax.swing.GroupLayout panelImprimeLayout = new javax.swing.GroupLayout(panelImprime);
-        panelImprime.setLayout(panelImprimeLayout);
-        panelImprimeLayout.setHorizontalGroup(
-            panelImprimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
-        );
-        panelImprimeLayout.setVerticalGroup(
-            panelImprimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Imprime", panelImprime);
-
-        javax.swing.GroupLayout panelRemoveUmLayout = new javax.swing.GroupLayout(panelRemoveUm);
-        panelRemoveUm.setLayout(panelRemoveUmLayout);
-        panelRemoveUmLayout.setHorizontalGroup(
-            panelRemoveUmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
-        );
-        panelRemoveUmLayout.setVerticalGroup(
-            panelRemoveUmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Del Um", panelRemoveUm);
-
-        javax.swing.GroupLayout panelRemoveTodosLayout = new javax.swing.GroupLayout(panelRemoveTodos);
-        panelRemoveTodos.setLayout(panelRemoveTodosLayout);
-        panelRemoveTodosLayout.setHorizontalGroup(
-            panelRemoveTodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
-        );
-        panelRemoveTodosLayout.setVerticalGroup(
-            panelRemoveTodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Del Todos", panelRemoveTodos);
+        tabPane.addTab("Add Final", panelFinal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,14 +258,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tabPane)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addComponent(tabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 34, Short.MAX_VALUE))
         );
 
         pack();
@@ -218,21 +273,113 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOkActionPerformed
         if (radioInsereInicio.isSelected()) {
+            tabPane.setSelectedIndex(1);
+            
+            groupOpcoes.clearSelection();
 
-        } else if (radioInsereInicio.isSelected()) {
+        } else if (radioInsereFinal.isSelected()) {
+            tabPane.setSelectedIndex(2);
+
+            groupOpcoes.clearSelection();
 
         } else if (radioPesquisa.isSelected()) {
+            String pesquisa = JOptionPane.showInputDialog("Digite o modelo p/ pesquisar");
+
+            String result = lista.pesquisarNo(pesquisa);
+
+            JOptionPane.showMessageDialog(this, result);
+            
+            groupOpcoes.clearSelection();
 
         } else if (radioImprime.isSelected()) {
+            JOptionPane.showMessageDialog(this, lista.imprimirLista());
+
+            groupOpcoes.clearSelection();
 
         } else if (radioRemoveUm.isSelected()) {
+            String remove = JOptionPane.showInputDialog("Digite o modelo p/ remover");
+
+            if (!remove.equals("") && lista.removerNo(remove)) {
+                JOptionPane.showMessageDialog(this, "Removido com sucesso!");
+
+                groupOpcoes.clearSelection();
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Falha ao remover");
+            }
 
         } else if (radioRemoveTodos.isSelected()) {
+            if (lista.removerTudo()) {
+                JOptionPane.showMessageDialog(this, "Todos os elementos foram removidos"
+                        + " com sucesso!");
+
+                groupOpcoes.clearSelection();
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, this,
+                        "Falha ao remover", JOptionPane.ERROR_MESSAGE);
+            }
 
         } else {
             JOptionPane.showMessageDialog(this, "Nenhuma opção selecionada!");
         }
     }//GEN-LAST:event_buttonOkActionPerformed
+
+    private void buttonAddInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddInicioActionPerformed
+        try {
+            Carro c = new Carro();
+
+            c.setModelo(txtModeloInicio.getText());
+            c.setMarca(txtMarcaInicio.getText());
+            c.setAno(Integer.parseInt(txtAnoInicio.getText()));
+
+            lista.inserirPrimeiro(c);
+
+            JOptionPane.showMessageDialog(this, "Adicionado com sucesso!");
+            
+            txtModeloInicio.setText("");
+            txtMarcaInicio.setText("");
+            txtAnoInicio.setText("");
+
+            tabPane.setSelectedIndex(0);
+
+        } catch (Exception e) {
+            //Se ocorrer algum erro técnico, mostra-o no console,
+            //mas esconde-o do usuário
+            e.printStackTrace();
+
+            //Exibe uma mensagem de erro genérica ao usuário
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(),
+                    "Falha ao adicionar", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_buttonAddInicioActionPerformed
+
+    private void buttonAddFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddFinalActionPerformed
+        try {
+            Carro c = new Carro();
+
+            c.setModelo(txtModeloFinal.getText());
+            c.setMarca(txtMarcaFinal.getText());
+            c.setAno(Integer.parseInt(txtAnoFinal.getText()));
+
+            lista.inserirUltimo(c);
+
+            JOptionPane.showMessageDialog(this, "Adicionado com sucesso!");
+            
+            txtModeloFinal.setText("");
+            txtMarcaFinal.setText("");
+            txtAnoFinal.setText("");
+
+            tabPane.setSelectedIndex(0);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(),
+                    "Falha ao adicionar", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonAddFinalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,22 +417,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAddFinal;
+    private javax.swing.JButton buttonAddInicio;
     private javax.swing.JButton buttonOk;
     private javax.swing.ButtonGroup groupOpcoes;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblAnoFinal;
+    private javax.swing.JLabel lblAnoInicio;
+    private javax.swing.JLabel lblMarcaFinal;
+    private javax.swing.JLabel lblMarcaInicio;
+    private javax.swing.JLabel lblModeloFinal;
+    private javax.swing.JLabel lblModeloInicio;
     private javax.swing.JLabel lblOpcoes;
     private javax.swing.JPanel panelFinal;
-    private javax.swing.JPanel panelImprime;
     private javax.swing.JPanel panelInicio;
     private javax.swing.JPanel panelOpcoes;
-    private javax.swing.JPanel panelPesquisa;
-    private javax.swing.JPanel panelRemoveTodos;
-    private javax.swing.JPanel panelRemoveUm;
     private javax.swing.JRadioButton radioImprime;
     private javax.swing.JRadioButton radioInsereFinal;
     private javax.swing.JRadioButton radioInsereInicio;
     private javax.swing.JRadioButton radioPesquisa;
     private javax.swing.JRadioButton radioRemoveTodos;
     private javax.swing.JRadioButton radioRemoveUm;
+    private javax.swing.JTabbedPane tabPane;
+    private javax.swing.JTextField txtAnoFinal;
+    private javax.swing.JTextField txtAnoInicio;
+    private javax.swing.JTextField txtMarcaFinal;
+    private javax.swing.JTextField txtMarcaInicio;
+    private javax.swing.JTextField txtModeloFinal;
+    private javax.swing.JTextField txtModeloInicio;
     // End of variables declaration//GEN-END:variables
 }
