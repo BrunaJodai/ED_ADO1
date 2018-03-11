@@ -48,10 +48,10 @@ public class ListaSimples {
         No novoNo = new No(c);
         if (this.isEmpty()) {
             this.ult = novoNo;
-            novoNo.setProx(this.prim);
-            this.prim = novoNo;
-            this.qtdNo++;
         }
+        novoNo.setProx(this.prim);
+        this.prim = novoNo;
+        this.qtdNo++;
     }
 
     public void inserirUltimo(Carro c) {
@@ -68,28 +68,33 @@ public class ListaSimples {
     public boolean removerNo(String modelo) {
         No atual = this.prim;
         No anterior = null;
-
+        
         if (this.isEmpty()) {
             return false;
-        } else {
+            
+        } else {            
             while (atual != null && (!atual.getC().getModelo().equals(modelo))) {
                 anterior = atual;
                 atual = atual.getProx();
-
-                if (atual == prim) {
-                    if (this.prim == this.ult) {
-                        this.ult = null;
-                        this.prim = this.prim.getProx();
-
-                    }
-                } else {
-                    if (atual == ult) {
-                        this.ult = anterior;
-                        anterior.setProx(atual.getProx());
-                    }
+            }
+            
+            if (atual == prim) {
+                if (this.prim == this.ult) {
+                    this.ult = null;
                 }
+                
+                this.prim = this.prim.getProx();
+                
+            } else {                
+                if (atual == ult) {
+                    this.ult = anterior;
+                }
+                
+                anterior.setProx(atual.getProx());
+                
             }
         }
+        
         this.qtdNo--;
         return true;
     }
@@ -107,7 +112,7 @@ public class ListaSimples {
             while (atual != null && (!atual.getC().getModelo().equals(modelo))) {
                 atual = atual.getProx();
             }
-                
+
             msg = "Modelo: " + atual.getC().getModelo() + "\n"
                     + "Marca: " + atual.getC().getMarca() + "\n"
                     + "Ano: " + atual.getC().getAno();
@@ -140,7 +145,7 @@ public class ListaSimples {
             ult = null;
             qtdNo = 0;
         }
-        
+
         return true;
     }
 }
